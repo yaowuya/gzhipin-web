@@ -8,9 +8,11 @@ import {
     Radio,
     Button
 } from 'antd-mobile'
-
+import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom'
 
 import Logo from '../../components/logo/logo'
+import {register} from '../../redux/actions'
 
 const Item = List.Item
 
@@ -32,11 +34,15 @@ class Register extends Component {
     }
 
     register = () => {
-        console.log(JSON.stringify(this.state))
+        this.props.register(this.state)
     }
 
     render() {
         const {type} = this.state
+        const {redirectTo, msg} = this.props
+        if (redirectTo) {
+            return <Redirect to={redirectTo}/>
+        }
         return (
             <div>
                 <NavBar>硅谷直聘</NavBar>
@@ -80,10 +86,15 @@ class Register extends Component {
                         <Button className="mt-10" type='primary' onClick={this.register}>注&nbsp;&nbsp;&nbsp;册</Button>
                         <Button className="mt-10" onClick={this.toLogin}>已经有账号</Button>
                     </List>
+                    {msg ? <p className='text-center text-red fs-18'>{msg}</p> : null}
                 </WingBlank>
             </div>
         );
     }
 }
 
-export default Register;
+//和redux交互
+export default connect(
+    state => state.user,
+    {register}
+)(Register)

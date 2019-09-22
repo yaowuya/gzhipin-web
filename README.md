@@ -16,3 +16,5 @@
 "react-app-rewired": "^1.5.2"
 ```
 3、rcc + tab键 - - 用ES6模块系统创建一个React组件类
+
+4、在package.json文件中使用proxy做代理，解决跨域问题

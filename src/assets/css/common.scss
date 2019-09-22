@@ -50,3 +50,9 @@
     }
   }
 }
+//font-size fs-
+@each $key, $val in $font-sizes {
+  .fs-#{$key} {
+    font-size: $base-font-size*$val;
+  }
+}
