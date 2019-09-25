@@ -12,3 +12,8 @@ export const reqRegister = (user) => http.post("/register", user)
 export const reqLogin = ({username, password}) => {
     return http.post("/login", {username, password})
 }
+
+// 更新用户信息
+export const reqUpdateUser = (user) => {
+    return http.post("/update", user)
+}
