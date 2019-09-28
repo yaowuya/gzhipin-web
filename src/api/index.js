@@ -17,3 +17,8 @@ export const reqLogin = ({username, password}) => {
 export const reqUpdateUser = (user) => {
     return http.post("/update", user)
 }
+
+// 查看用户信息(根据cookie)
+export const reqUser = () => {
+    return http.get("/user")
+}

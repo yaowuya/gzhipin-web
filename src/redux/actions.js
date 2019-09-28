@@ -11,7 +11,8 @@ import {
 import {
     reqRegister,
     reqLogin,
-    reqUpdateUser
+    reqUpdateUser,
+    reqUser
 } from "../api/index"
 
 // 授权成功的同步action
@@ -93,4 +94,19 @@ export const updateUser = (user) => {
             dispatch(resetUser(result.msg))
         }
     }
+}
+
+// 获取用户异步action
+export const getUser=()=>{
+  return async dispatch=>{
+      // 执行异步ajax请求
+      const response = await reqUser()
+      const result = response.data
+      if(result.code===0) { // 成功
+          // getMsgList(dispatch, result.data._id)
+          dispatch(receiveUser(result.data))
+      } else { // 失败
+          dispatch(resetUser(result.msg))
+      }
+  }
 }
