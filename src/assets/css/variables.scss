@@ -14,7 +14,7 @@ $colors: (
 );
 
 // font size
-$base-font-size: 1px ;
+$base-font-size: 1px;
 $font-sizes: (
         "13":13,
         "14":14,
@@ -36,7 +36,7 @@ $spacing-directions: (
         b: bottom,
         l: left,
 );
-$spacing-base-size:1px ;
+$spacing-base-size: 1px;
 $spacing-sizes: (
         0: 0,
         5: 5,
@@ -44,7 +44,8 @@ $spacing-sizes: (
         15: 15,
         20: 20,
         25: 25,
-        30: 30
+        30: 30,
+        50:50,
 );
 
 $flex-jc: (

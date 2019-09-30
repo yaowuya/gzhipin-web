@@ -22,3 +22,10 @@ export const reqUpdateUser = (user) => {
 export const reqUser = () => {
     return http.get("/user")
 }
+
+//获取用户列表
+export const reqUserList = (type) => {
+    return http.get("/userlist", {
+        params: {type}
+    })
+}

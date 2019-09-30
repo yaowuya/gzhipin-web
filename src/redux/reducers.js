@@ -36,7 +36,21 @@ function user(state = initUser, action) {
     }
 }
 
+const initUserList = []
+
+// 产生userlist状态的reducer
+function userList(state = initUserList, action) {
+    switch (action.type) {
+        case RECEIVE_USER_LIST:
+            return action.data
+        default:
+            return state
+    }
+}
+
 // 返回合并的reducer
 export default combineReducers({
-    user
+    user,
+    userList
 })
+// 向外暴露的状态的结构: {user: {}, userList: [], chat: {}}
