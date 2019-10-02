@@ -20,7 +20,7 @@ class UserList extends Component {
                         userList.map(user => (
                             <div key={user._id}>
                                 <WhiteSpace/>
-                                <Card>
+                                <Card onClick={() => this.props.history.push(`/chat/${user._id}`)}>
                                     <Header
                                         thumb={require(`../../assets/images/headers/${user.header}.png`)}
                                         extra={user.username}

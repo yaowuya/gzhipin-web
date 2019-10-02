@@ -13,6 +13,7 @@ import Message from '../message/message'
 import Personal from '../personal/personal'
 import NotFound from '../../components/not-found/not-found'
 import NavFooter from '../../components/nav-footer/nav-footer'
+import Chat from '../chat/chat'
 
 import {getRedirectTo} from "../../utils"
 import {getUser} from "../../redux/actions"
@@ -68,7 +69,7 @@ class Main extends Component {
             return <Redirect to="/login"/>
         }
         // 如果有,读取redux中的user状态
-        const {user} = this.props
+        const {user, unReadCount} = this.props
         // 如果user有没有_id, 返回null(不做任何显示)
         // debugger
         if (!user._id) {
@@ -102,20 +103,21 @@ class Main extends Component {
                 {currentNav ? <NavBar className='sticky-header'>{currentNav.title}</NavBar> : null}
                 <Switch>
                     {
-                        navList.map(nav=><Route key={nav.path} path={nav.path} component={nav.component}/>)
+                        navList.map(nav => <Route key={nav.path} path={nav.path} component={nav.component}/>)
                     }
                     <Route key='/laobaninfo' path='/laobaninfo' component={LaobanInfo}/>
                     <Route key='/dasheninfo' path='/dasheninfo' component={DashenInfo}/>
+                    <Route path='/chat/:userid' component={Chat}/>
                     <Route component={NotFound}/>
                 </Switch>
-                {currentNav ? <NavFooter navList={navList}/> : null}
+                {currentNav ? <NavFooter navList={navList} unReadCount={unReadCount}/> : null}
             </div>
         );
     }
 }
 
 export default connect(
-    state => ({user: state.user}),
+    state => ({user: state.user, unReadCount: state.chat.unReadCount}),
     {getUser}
 )(Main);
 /*

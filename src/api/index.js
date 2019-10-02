@@ -29,3 +29,8 @@ export const reqUserList = (type) => {
         params: {type}
     })
 }
+// 获取当前用户的聊天消息列表
+export const reqChatMsgList = () => http.get("/msglist")
+
+// 修改指定消息为已读
+export const reqReadMsg = (from) => http.post("/readmsg", {from})
